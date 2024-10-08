@@ -21,6 +21,7 @@ library(tidyverse)
 
 ``` r
 library(dplyr)
+library(leaflet)
 
 data(nyc_airbnb)
 ```
@@ -74,3 +75,21 @@ ggplot() +
 ```
 
 ![](case_study_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+Leaflet
+
+``` r
+pal <- colorNumeric(
+  palette = "viridis", 
+  domain = nyc_airbnb$review_scores_location
+)
+
+nyc_airbnb |> 
+  filter(neighbourhood_group == "Manhattan", 
+         price < 1000) |> 
+  leaflet() |> 
+  addProviderTiles(providers$CartoDB.Positron) |> 
+  addCircleMarkers(~lat, ~long, color = ~pal(review_scores_location), radius = 2)
+```
+
+![](case_study_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
