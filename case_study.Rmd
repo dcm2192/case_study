@@ -2,7 +2,7 @@
 title: "case_study"
 author: "Dylan Morgan"
 date: "2024-10-08"
-output: html_document
+output: github_document
 ---
 
 ```{r}
@@ -12,7 +12,7 @@ data(nyc_airbnb)
 ```
 
 
-## Brainstorm questions
+## Brainstorm Questions
 
 * Where are max and min airbnb prices?
   * What are average prices?
